@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="custom_job_position_view" model="ir.ui.view">
+            <field name="name">Custom Job Position View</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group[@name='recruitment']" position="after">
+                    <group string="Default Access and Escalation" name="default_access_escalation">
+                        <field name="default_groub_crm"/>
+                        <field name="default_esc_crm"/>
+                        <field name="is_presales_eng" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>    

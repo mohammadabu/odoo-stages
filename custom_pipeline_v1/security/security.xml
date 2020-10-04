@@ -1,0 +1,42 @@
+<odoo>
+    <!-- <record id="group_crm_users" model="res.groups">
+        <field name="name">Users Pipeline</field>
+        <field name="category_id" ref="base.module_category_crm"/>
+    </record> -->
+    <record id="crm_stages_users_only" model="ir.rule">
+        <field name="name">Users Can only view By stages</field>
+        <field name="model_id" ref="model_crm_stage" />
+        <field name="groups" eval="[(4,ref('new_custom_crm_v1.group_crm_users'))]"/>
+        <field name="perm_read" eval = "1"/>
+        <field name="perm_write" eval = "1"/>
+        <field name="per_create" eval = "1"/>
+        <field name="per_unlink" eval = "1"/>
+        <field name="domain_force">
+            ['|','|',('all_user_emails','like','#'+str(user.id)+'#'),'|',('all_user_emails_from_stage','like','#'+str(user.id)+'#'),('all_user_emails_from_opper','like','#'+str(user.id)+'#'),'&amp;',('all_user_emails_from_presales','like','#'+str(user.id)+'#'),('name','=','Presales')]
+        </field>
+    </record> 
+    <!-- <record id="crm_opportunity_users_only" model="ir.rule">
+        <field name="name">Users Can only view By opportunity</field>
+        <field name="model_id" ref="model_crm_lead" />
+        <field name="groups" eval="[(4,ref('new_custom_crm.group_crm_users'))]"/>
+        <field name="perm_read" eval = "1"/>
+        <field name="perm_write" eval = "1"/>
+        <field name="per_create" eval = "1"/>
+        <field name="per_unlink" eval = "1"/>
+        <field name="domain_force">
+            ['|','|',('stage_id.all_user_emails','like','#'+str(user.id)+'#'),'|',('stage_id.all_user_emails_from_stage','like','#'+str(user.id)+'#'),('user_id','=',user.id),'&amp;',('stage_id.name','=','Presales'),('username_ids','in',user.id)]
+        </field>
+    </record> -->
+    <!-- <record id="crm_activity_users_only" model="ir.rule">
+        <field name="name">Users Can only view By Activity</field>
+        <field name="model_id" ref="crm.model_crm_activity_report" />
+        <field name="groups" eval="[(4,ref('new_custom_crm.group_crm_users'))]"/>
+        <field name="perm_read" eval = "1"/>
+        <field name="perm_write" eval = "1"/>
+        <field name="per_create" eval = "1"/>
+        <field name="per_unlink" eval = "1"/>
+        <field name="domain_force">
+            ['|','|',('stage_id.all_user_emails','like','#'+str(user.id)+'#'),'|',('stage_id.all_user_emails_from_stage','like','#'+str(user.id)+'#'),('user_id','=',user.id),'&amp;',('stage_id.name','=','Presales'),('username_ids','in',user.id)]
+        </field>
+    </record> -->
+</odoo>

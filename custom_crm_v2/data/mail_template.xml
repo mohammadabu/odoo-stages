@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<odoo>
+  <data noupdate="1">
+        <record id="opportunities_email_tempalte" model="mail.template">
+          <field name="name">Opportunities Escalation : Send By Email</field>
+          <field name="model_id" ref="model_crm_lead" />
+          <field name="email_from">odoo@odoo.com</field>
+          <field name="email_to">${object.users_email}</field>
+          <field name="subject">Opportunities Escalation</field>
+          <field name="body_html" type="html">
+              <div>
+                  this opportunity ${object.name} in stage ${object.stage_id.name} 
+                  It must be moved from this stage  ${object.stage_id.escalation_after} 
+              </div>
+          </field>
+        </record>
+        <record id="custom_update_opportunities_email_tempalte" model="mail.template">
+          <field name="name">Update Opportunities : Send By Email</field>
+          <field name="model_id" ref="model_crm_lead" />
+          <field name="email_from">odoo@odoo.com</field>
+          <field name="email_to">${object.users_email}</field>
+          <field name="subject">Update Opportunities</field>
+          <field name="body_html" type="html">
+              <div>
+                  change Opportunities  to  stage ${object.stage_id.name} 
+              </div>
+          </field>
+        </record>
+  </data>
+</odoo>  
